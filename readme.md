@@ -1,4 +1,4 @@
-# Capstone 2: Enjoy the Ouutdoors
+# Capstone 2: Enjoy the Outdoors
 
 ## Project Description: <br>
 - This project was achieved and implemented using  HTML , CSS and JS. <br>
