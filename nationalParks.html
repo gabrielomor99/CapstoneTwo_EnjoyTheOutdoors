@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Parks</title>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" target="_blank">
+                <img src="Images/attachment_90710732.jpg"
+                    width=30 height=30 alt="Resort Logo">
+
+                <b>National Parks</b>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html" target="_blank">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mountains.html" target="_blank">Mountains</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid"><strong>Search by State:</strong>
+
+
+    <select id="select-state" ></select>
+    <select id="select-park"></select>
+
+
+    <strong>
+        <div id="park-id"></div>
+
+
+        <div id="park-name"></div>
+
+
+        <div id="park-location"></div>
+
+
+        <div id="park-contact-info"></div>
+    </strong>
+
+    
+
+
+
+    <br>
+    <strong>Search by Park:</strong>
+    <select id="park-type"></select>
+
+
+    <select id="park-locationName"></select>
+
+    <strong>
+        <div id="park-type-id"></div>
+
+        <div id="park-type-name"></div>
+
+        <div id="park-type-location"></div>
+
+        <div id="park-type-contact-info"></div>
+
+       <a><div id="park-type-URL"></div></a> 
+    </strong> <br>
+
+    <img src="Images/istockphoto-1325588515-612x612.jpg" width="650" height="400"
+        alt="Town Image"> <img src="Images/191108-yosemite-national-park-ew-804p.jpg" width="650" height="400"
+        alt="Town Image">  
+
+    <header>
+        <h3>Discover National Parks</h3>
+        <p>Explore the beauty of nature in these breathtaking national parks.</p>
+    </header>
+
+    <section>
+        <h3>Featured Parks</h3> <hr> 
+
+        <article>
+            <h3>Yellowstone</h3>
+            <p>Geothermal wonders and Old Faithful await you at Yellowstone National Park.</p>
+        </article>
+
+        <article>
+            <h3>Grand Canyon</h3>
+            <p>Experience the awe-inspiring beauty of the Grand Canyon's majestic landscapes.</p>
+        </article>
+
+        <article>
+            <h3>Yosemite</h3>
+            <p>Explore towering waterfalls and ancient sequoia trees at Yosemite National Park.</p>
+        </article>
+    </section>
+
+    <section>
+        <h3>Plan Your Visit</h3>
+        <p>Discover activities, trail maps, and ranger-led programs for your next adventure.</p>
+    </section>
+
+    <section>
+        <h3>Preserving Nature</h3>
+        <p>Join us in preserving these natural wonders for future generations. Be a steward of the environment!</p>
+    </section>
+
+    <footer>
+        <p>Start your journey of discovery today. Explore, experience, and protect our national parks.</p>
+
+        <p>&copy; 2023 Town Promotion. All rights reserved.</p>
+    </footer>
+</div>
+
+    
+    <script src="nationalParks.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
