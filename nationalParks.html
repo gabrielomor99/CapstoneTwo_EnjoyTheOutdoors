@@ -4,21 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National Parks</title>
+    <title>National Parks | Trailhead Navigator</title>
+    <link rel="icon" href="Images/attachment_90710732.jpg">
   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="site.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="index.html" target="_blank">
+            <a class="navbar-brand" href="index.html">
                 <img src="Images/attachment_90710732.jpg"
-                    width=30 height=30 alt="Resort Logo">
+                    width="30" height="30" alt="Trailhead Navigator logo">
 
-                <b>National Parks</b>
+                <b>Trailhead Navigator</b>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -27,31 +29,40 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html" target="_blank">Home</a>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="mountains.html" target="_blank">Mountains</a>
+                        <a class="nav-link" href="mountains.html">Mountains</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nationalParks.html" aria-current="page">National Parks</a>
                     </li>
                 </ul>
-
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid"><strong>Search by State:</strong>
+    <header class="page-intro">
+        <p class="eyebrow">Make room for wonder</p>
+        <h1>Discover national parks.</h1>
+        <p>Explore the beauty of nature in these breathtaking national parks.</p>
+    </header>
+
+    <main class="site-main">
+    <section class="finder-layout" aria-label="Find a national park">
+    <div class="finder-group">
+    <h2>Find a park by state</h2>
+    <label for="select-state">State</label>
+    <select id="select-state" aria-label="Select a state"></select>
+    <div id="state-park-filter" hidden>
+    <label for="select-park">Park</label>
+    <select id="select-park" aria-label="Select a park"></select>
+    </div>
 
 
-    <select id="select-state" ></select>
-    <select id="select-park"></select>
-
-
-    <strong>
+    <div class="park-details" aria-live="polite">
         <div id="park-id"></div>
 
 
@@ -62,20 +73,24 @@
 
 
         <div id="park-contact-info"></div>
-    </strong>
+        <a id="park-url" hidden>Visit official park website</a>
+    </div>
 
     
 
 
 
-    <br>
-    <strong>Search by Park:</strong>
-    <select id="park-type"></select>
+    </div>
+    <div class="finder-group">
+    <h2>Find a park by type</h2>
+    <label for="park-type">Park type</label>
+    <select id="park-type" aria-label="Select a park type"></select>
+    <div id="park-type-filter" hidden>
+    <label for="park-locationName">Park</label>
+    <select id="park-locationName" aria-label="Select a park"></select>
+    </div>
 
-
-    <select id="park-locationName"></select>
-
-    <strong>
+    <div class="park-details" aria-live="polite">
         <div id="park-type-id"></div>
 
         <div id="park-type-name"></div>
@@ -84,20 +99,19 @@
 
         <div id="park-type-contact-info"></div>
 
-       <a><div id="park-type-URL"></div></a> 
-    </strong> <br>
+    <a id="park-type-url" hidden>Visit official park website</a>
+    </div>
+    </div>
 
-    <img src="Images/istockphoto-1325588515-612x612.jpg" width="650" height="400"
-        alt="Town Image"> <img src="Images/191108-yosemite-national-park-ew-804p.jpg" width="650" height="400"
-        alt="Town Image">  
+    </section>
 
-    <header>
-        <h3>Discover National Parks</h3>
-        <p>Explore the beauty of nature in these breathtaking national parks.</p>
-    </header>
+    <div class="feature-gallery" aria-label="Featured national park landscapes">
+        <img src="Images/istockphoto-1325588515-612x612.jpg" width="612" height="612" alt="A scenic national park landscape" fetchpriority="high">
+        <img src="Images/191108-yosemite-national-park-ew-804p.jpg" width="804" height="536" alt="Yosemite National Park landscape" loading="lazy">
+    </div>
 
-    <section>
-        <h3>Featured Parks</h3> <hr> 
+    <section class="content-section">
+        <h2>Featured Parks</h2>
 
         <article>
             <h3>Yellowstone</h3>
@@ -115,25 +129,26 @@
         </article>
     </section>
 
-    <section>
-        <h3>Plan Your Visit</h3>
+    <section class="content-section">
+        <h2>Plan Your Visit</h2>
         <p>Discover activities, trail maps, and ranger-led programs for your next adventure.</p>
     </section>
 
-    <section>
-        <h3>Preserving Nature</h3>
+    <section class="content-section">
+        <h2>Preserving Nature</h2>
         <p>Join us in preserving these natural wonders for future generations. Be a steward of the environment!</p>
     </section>
+
+    </main>
 
     <footer>
         <p>Start your journey of discovery today. Explore, experience, and protect our national parks.</p>
 
-        <p>&copy; 2023 Town Promotion. All rights reserved.</p>
+        <p>&copy; 2026 Trailhead Navigator. All rights reserved.</p>
     </footer>
-</div>
 
     
-    <script src="nationalParks.js"></script>
+    <script src="nationalParks.js?v=2"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

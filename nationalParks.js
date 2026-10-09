@@ -6861,7 +6861,6 @@ const nationalParksArray = [
 
 
 const locationsArray = [
-    "",
     "Alabama",
     "Alaska",
     "American Samoa",
@@ -6899,6 +6898,7 @@ const locationsArray = [
     "New York",
     "North Carolina",
     "North Dakota",
+    "Northern Mariana Islands",
     "Ohio",
     "Oklahoma",
     "Oregon",
@@ -6920,7 +6920,6 @@ const locationsArray = [
 ]
 
 const parkTypesArray = [
-    "",
     "National Park",
     "National Monument",
     "Recreation Area",
@@ -6936,110 +6935,117 @@ const parkTypesArray = [
     "Parkway"
 ]
 
-let selectStateEl = document.getElementById("select-state");
-let selectParkEl = document.getElementById("select-park");
+const parkStateAliases = {
+    "MP-Japan": "Northern Mariana Islands",
+    "Massachuetts": "Massachusetts",
+    "NJ": "New Jersey",
+    "RI": "Rhode Island"
+};
 
-let selectParkTypeEl = document.getElementById("park-type");
-let selectParkTypeLocationNameEl = document.getElementById("park-locationName");
+const selectStateEl = document.getElementById("select-state");
+const selectParkEl = document.getElementById("select-park");
+const selectParkTypeEl = document.getElementById("park-type");
+const selectParkTypeLocationNameEl = document.getElementById("park-locationName");
+const stateParkFilterEl = document.getElementById("state-park-filter");
+const parkTypeFilterEl = document.getElementById("park-type-filter");
 
-let searchByStateEl = document.getElementById("search-by-state");
-let searchByParkTypeEl = document.getElementById("search-by-park");
-let searchByStateTextEl = document.getElementById("search-by-state-text")
+function getParkState(state) {
+    return parkStateAliases[state] || state;
+}
+
+function clearParkDetails(prefix) {
+    for (const field of ["id", "name", "location", "contact-info"]) {
+        document.getElementById(`${prefix}-${field}`).textContent = "";
+    }
+
+    const visitLink = document.getElementById(`${prefix}-url`);
+    visitLink.removeAttribute("href");
+    visitLink.hidden = true;
+}
+
+function showParkDetails(park, prefix) {
+    document.getElementById(`${prefix}-id`).textContent = `Location ID: ${park.LocationID}`;
+    document.getElementById(`${prefix}-name`).textContent = `Park Name: ${park.LocationName}`;
+
+    const zipCode = park.ZipCode ? String(park.ZipCode).padStart(5, "0") : "";
+    const location = [park.Address || "", park.City, getParkState(park.State), zipCode]
+        .filter(Boolean)
+        .join(", ");
+    document.getElementById(`${prefix}-location`).textContent = `Location: ${location || "Not available"}`;
+    document.getElementById(`${prefix}-contact-info`).textContent = `Phone: ${park.Phone || "Not available"}`;
+
+    const visitLink = document.getElementById(`${prefix}-url`);
+    if (park.Visit) {
+        visitLink.href = park.Visit;
+        visitLink.hidden = false;
+    }
+}
 
 window.onload = () => {
-   
     populateParkTypeDropdown();
-    
-    selectParkTypeEl.onchange = () => {
-        selectParkTypeLocationNameEl.style.visibility = "visible";
-        selectParkTypeLocationNameEl.options.length = 0;
-        
-        let option = new Option("");
-        selectParkTypeLocationNameEl.appendChild(option);
-
-        let selectedParkType = selectParkTypeEl.value;
-        
-        for (let theNationalPark of nationalParksArray) {
-            if (theNationalPark.LocationName.includes(selectedParkType)) {
-                let option = new Option(theNationalPark.LocationName);
-                selectParkTypeLocationNameEl.appendChild(option);
-            }
-        }
-    };
-    
-    selectParkTypeLocationNameEl.onchange = () => {
-        let parkTypeSelected = selectParkTypeLocationNameEl.value;
-        let parkTypeIdEl = document.getElementById("park-type-id");
-        let theParkTypeNameEl = document.getElementById("park-type-name");
-        let theParkTypeLocationEl = document.getElementById("park-type-location");
-        let theParkContactInfoEl = document.getElementById("park-type-contact-info");
-        
-        for (let thenationalPark of nationalParksArray) {
-            if (thenationalPark.LocationName.includes(parkTypeSelected)) {
-                parkTypeIdEl.innerHTML = "Location ID: " + thenationalPark.LocationID;
-                theParkTypeLocationEl.innerHTML = "Location: " + thenationalPark.Address + ", "
-                + thenationalPark.City + ", " + thenationalPark.State + ", " + thenationalPark.ZipCode;
-                theParkTypeNameEl.innerHTML = "Park Name: " + thenationalPark.LocationName;
-                theParkContactInfoEl.innerHTML = "Phone: " + thenationalPark.Phone;
-            }
-        };
-    }
-
     populateStateDropdown();
-    
-    selectStateEl.onchange = () => {
-        selectParkEl.style.visibility = "visible";
-        selectParkEl.options.length = 0;
-        
-        let option = new Option("");
-        selectParkEl.appendChild(option);
 
-        let selectedState = selectStateEl.value;
+    selectParkTypeEl.onchange = () => {
+        const selectedParkType = selectParkTypeEl.value;
+        selectParkTypeLocationNameEl.options.length = 0;
+        selectParkTypeLocationNameEl.appendChild(new Option("Select a park", ""));
+        parkTypeFilterEl.hidden = !selectedParkType;
+        clearParkDetails("park-type");
 
-        for (let nationalPark of nationalParksArray) {
-            if (nationalPark.State === selectedState) {
-                let option = new Option(nationalPark.LocationName);
-                selectParkEl.appendChild(option);
+        if (!selectedParkType) return;
+
+        for (const park of nationalParksArray) {
+            if (park.LocationName.includes(selectedParkType)) {
+                selectParkTypeLocationNameEl.appendChild(new Option(park.LocationName, park.LocationName));
             }
         }
     };
 
+    selectParkTypeLocationNameEl.onchange = () => {
+        const selectedPark = nationalParksArray.find(park => park.LocationName === selectParkTypeLocationNameEl.value);
+        if (selectedPark) {
+            showParkDetails(selectedPark, "park-type");
+        } else {
+            clearParkDetails("park-type");
+        }
+    };
+
+    selectStateEl.onchange = () => {
+        const selectedState = selectStateEl.value;
+        selectParkEl.options.length = 0;
+        selectParkEl.appendChild(new Option("Select a park", ""));
+        stateParkFilterEl.hidden = !selectedState;
+        clearParkDetails("park");
+
+        if (!selectedState) return;
+
+        for (const park of nationalParksArray) {
+            if (getParkState(park.State) === selectedState) {
+                selectParkEl.appendChild(new Option(park.LocationName, park.LocationName));
+            }
+        }
+    };
 
     selectParkEl.onchange = () => {
-        let nationalParkSelected = selectParkEl.value;
-        let parkIdEl = document.getElementById("park-id");
-        let parkNameEl = document.getElementById("park-name");
-        let parkLocationEl = document.getElementById("park-location");
-        let parkContactInfoEl = document.getElementById("park-contact-info");
-
-
-        for (let nationalPark of nationalParksArray) {
-            if (nationalPark.LocationName === nationalParkSelected) {
-                parkIdEl.innerHTML = "Location ID: " + nationalPark.LocationID;
-                parkLocationEl.innerHTML = "Location: " + nationalPark.Address + ", "
-                    + nationalPark.City + ", " + nationalPark.State + ", " + nationalPark.ZipCode;
-                parkNameEl.innerHTML = "Park Name: " + nationalPark.LocationName;
-                parkContactInfoEl.innerHTML = "Phone: " + nationalPark.Phone;
-            }
-        };
-
-
+        const selectedPark = nationalParksArray.find(park => park.LocationName === selectParkEl.value);
+        if (selectedPark) {
+            showParkDetails(selectedPark, "park");
+        } else {
+            clearParkDetails("park");
+        }
     };
-  
 };
 
-populateStateDropdown = () => {
-    for (let i = 0; i < locationsArray.length; i++) {
-        let theStateName = locationsArray[i];
-        let stateOption = new Option(theStateName);
-        selectStateEl.appendChild(stateOption);
+function populateStateDropdown() {
+    selectStateEl.appendChild(new Option("Select a state", ""));
+    for (const state of locationsArray) {
+        selectStateEl.appendChild(new Option(state, state));
     }
-};
+}
 
-populateParkTypeDropdown = () => {
-    for (let i = 0; i < parkTypesArray.length; i++) {
-        let parkTypeName = parkTypesArray[i];
-        let parkTypeOption = new Option(parkTypeName);
-        selectParkTypeEl.appendChild(parkTypeOption);
+function populateParkTypeDropdown() {
+    selectParkTypeEl.appendChild(new Option("Select a park type", ""));
+    for (const parkType of parkTypesArray) {
+        selectParkTypeEl.appendChild(new Option(parkType, parkType));
     }
 }

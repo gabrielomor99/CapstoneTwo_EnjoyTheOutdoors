@@ -1,61 +1,45 @@
-# Capstone 2: Enjoy the Outdoors
+# Trailhead Navigator
 
-## Project Description: <br>
-- This project was achieved and implemented using  HTML , CSS and JS. <br>
-- It involves finding national parks and mountains across several states with a wide range of variety for all. <br>
-- It consists of the Home page , Mountains Page and the National Parks page which all points you to your desired destination.
+Trailhead Navigator helps people explore national parks and mountain destinations through searchable guides and landscape photography.
+
+## Features
+
+- Find national parks by state or park type.
+- View park location and contact details, with a link to the official site when available.
+- Browse mountain descriptions, elevations, difficulty ratings, and photos.
+- Use the responsive layout on desktop and mobile screens.
 
 ## Pages
- 
-### Home Page <br>
 
-This is the landing page for our website and it includes navigation and highlights things that can help point you in the right direction.
+### Home
 
-<p align="center">
-    <img width="500" src="Images/homePageScreenCapture.png">
-</p>
+An overview of the site with links to the park and mountain guides.
 
-### Mountains Page
+![Trailhead Navigator home page](Images/homePageScreenCapture.png)
 
-This is the Mountains page for our website which it includes details about various mountains across the country and highlights things that can help people enjoy the great outdoors.
+### Mountains
 
-<p align="center">
-    <img width="500" src="Images/mountainsPageScreenCapture.png">
-</p>
+Choose a mountain to view its description, elevation, difficulty, and image.
 
+![Mountain finder page](Images/mountainsPageScreenCapture.png)
 
-### National Parks Page
+### National Parks
 
-This page displays a wide range of national parks all over the country with a lot of helpful information which helps facilitates the process of picking out which of the parks to experience.  
+Search for parks by state or park type, then review available location and contact information.
 
-<p align="center">
-    <img width="500" src="Images/nationalParksPageScreenCapture.png">
-</p>
+![National parks finder page](Images/nationalParksPageScreenCapture.png)
 
+## Built With
 
-### Interesting code 
+- HTML, CSS, and JavaScript
+- Bootstrap 5.3
 
-What makes this code interesting is:
-- It facilitates a process that would have otherwise been more extensive.
--  It dynamically creates the options.
+## Run Locally
 
+Open `index.html` in a browser, or start a local server from this directory:
 
- ```
-  selectByParkTypeEl.onchange = () => {
-        selectByLocationNameEl.style.visibility = "visible";
-        selectByLocationNameEl.options.length = 0;
-        
-        let option = new Option("");
-        selectByLocationNameEl.appendChild(option);
-
-        let selectedParkType = selectByParkTypeEl.value;
-        
-        for (let theNationalPark of nationalParksArray) {
-            if (theNationalPark.LocationName.includes(selectedParkType)) {
-                let option = new Option(theNationalPark.LocationName);
-                selectByLocationNameEl.appendChild(option);
-            }
-        }
-    };
- 
+```sh
+python3 -m http.server 8000
 ```
+
+Then open [http://localhost:8000](http://localhost:8000).

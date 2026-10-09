@@ -1,14 +1,35 @@
 body {
-    margin: 70px;
+    margin: 0;
+    padding: 76px 24px 24px;
     background-color: rgb(89, 119, 111);
     font-size: 20px;
-    margin-left: 40px;
-    
 }
 
+@media (max-width: 575px) {
+    body {
+        padding: 72px 16px 16px;
+    }
+}
 
-#park-locationName {
-    visibility: hidden;
+select {
+    display: block;
+    width: min(100%, 36rem);
+    max-width: 100%;
+    margin: 8px 0;
+}
+
+.container-fluid img {
+    max-width: 100%;
+    height: auto;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+.park-details {
+    font-weight: 700;
 }
 
 #select-state {
@@ -23,7 +44,6 @@ body {
     margin-left: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
-    visibility: hidden;
     overflow: hidden;
 }
 

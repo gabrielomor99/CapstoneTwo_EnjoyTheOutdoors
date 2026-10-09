@@ -36,6 +36,14 @@ h3{
     margin-top: 10px;
 }
 
+.mountain-detail-image {
+    display: block;
+    max-width: min(100%, 520px);
+    max-height: 360px;
+    object-fit: cover;
+    margin-top: 16px;
+}
+
 b{
     font-size: 30px;
     padding-top: 30px;

@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Trailhead Navigator | Find Your Next Adventure</title>
+    <link rel="icon" href="Images/attachment_90710732.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="site.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="index.html" target="_blank">
+            <a class="navbar-brand" href="index.html">
                 <img src="Images/attachment_90710732.jpg"
-                    width=30 height=30 alt="Resort Logo">
+                    width="30" height="30" alt="Trailhead Navigator logo">
 
                 <b>Trailhead Navigator</b>
             </a>
@@ -26,55 +27,49 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html" target="_blank">Home</a>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="mountains.html" target="_blank">Mountains</a>
-                    <li>
-                        <a class="nav-link" href="nationalParks.html" target="_blank">National Parks</a>
+                        <a class="nav-link" href="mountains.html">Mountains</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nationalParks.html">National Parks</a>
                     </li>
                 </ul>
-
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
 
-    <header>
-        <h3>Welcome to Trailhead Navigator: Where Your Outdoor Adventure Begins!</h3>
-
+    <header class="page-intro home-intro">
+        <p class="eyebrow">Find your next adventure</p>
+        <h1>Go where the wild begins.</h1>
+        <p>Explore America's national parks and mountain trails with a trusted guide to the outdoors.</p>
     </header>
 
 
 
-    <main>
+    <main class="site-main">
         <section id="main-page">
+            <div class="feature-gallery" aria-label="Featured landscapes">
+                <img src="Images/Arches-National-Park-1-1200x900.jpg.optimal.jpg" width="1200" height="900" alt="Red rock formations in Arches National Park" fetchpriority="high">
+                <img src="Images/191108-yosemite-national-park-ew-804p.jpg" width="804" height="536" alt="Yosemite National Park landscape" loading="lazy">
+            </div>
 
-
-            <img src="Images/Arches-National-Park-1-1200x900.jpg.optimal.jpg" width="500" height="400" alt="Town Image">
-            
-            <img src=" Images/Cape-Town-Hot-Places-to-visit-in-February-.jpg" width="500" height="400" alt="Town Image">
-
-           
-
-            
-            <h3>About</h3>
+            <section class="content-section">
+            <h2>About Trailhead Navigator</h2>
             <p> Our mission is to be your compass in the world of outdoor exploration, connecting you with the most
                 magnificent national parks and majestic mountains. Whether you're a seasoned hiker or a curious
                 wanderer, we're here to inspire and guide you on unforgettable journeys, unlocking the wonders of
                 nature. Let Trailhead Navigator be your trusted companion as you navigate the trails, discover hidden
-                gems, and create memories that last a lifetime."</p>
+                gems, and create memories that last a lifetime.</p>
+            </section>
 
 
 
-            <section>
-                <h3>Explore National Parks</h3>
+            <section class="content-section">
+                <h2>Explore National Parks</h2>
                 <p>Immerse yourself in nature's wonders as we guide you through breathtaking trails and scenic
                     landscapes. Whether
                     you're a seasoned adventurer or a novice explorer, Trailhead Navigator is your trusted companion in
@@ -90,8 +85,8 @@
                     ensuring you make the most of your outdoor escapade.</p>
             </section>
 
-            <section>
-                <h3>Conquer Majestic Mountains</h3>
+            <section class="content-section">
+                <h2>Conquer Majestic Mountains</h2>
                 <p>Embark on a journey to conquer iconic peaks with our mountain exploration feature. Discover the
                     thrill of
                     summiting breathtaking heights and witness panoramic views that will leave you speechless. Trailhead
@@ -100,26 +95,25 @@
                     experience unforgettable.</p>
             </section>
 
-            <section>
-                <h3>Your Gateway to Nature's Wonders</h3>
+            <section class="content-section">
+                <h2>Your Gateway to Nature's Wonders</h2>
                 <p>Whether you seek the tranquility of a peaceful hike or the adrenaline of a challenging ascent,
                     Trailhead
                     Navigator is your gateway to nature's wonders. Start your adventure today, and let the trails lead
                     you to
                     extraordinary discoveries.</p>
             </section>
+                </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2023 Town Promotion. All rights reserved.</p>
+            <p>&copy; 2026 Trailhead Navigator. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-</body>
-
 </body>
 
 </html>

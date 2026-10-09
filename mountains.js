@@ -536,36 +536,43 @@ let selectMountainEl = document.getElementById("select-mountain");
 let mountainNameEl = document.getElementById("mountain-name");
 let mountainElevationEl = document.getElementById("mountain-elevation");
 let mountainDescriptionEl = document.getElementById("mountain-description");
+let mountainEffortEl = document.getElementById("mountain-effort");
+let mountainImageEl = document.getElementById("mountain-image");
+let mountainResultEl = document.querySelector(".mountain-result");
 
 window.onload = () => {
     populateMountainDropdown();
 
     selectMountainEl.onchange = () => {
-        let selectedMountain = selectMountainEl.value;
+        let selectedMountain = mountainsArray.find(mountain => mountain && mountain.name === selectMountainEl.value);
 
-        // Clear previous values
-
-
-        for (let mountainArray of mountainsArray) {
-            if (mountainArray.name === selectedMountain) {
-                mountainNameEl.textContent = "Mountain Name: " + mountainArray.name;
-            }
-
-            if (mountainArray.name === selectedMountain) {
-                mountainDescriptionEl.textContent = "Description: " + mountainArray.desc;
-            }
-
-            if (mountainArray.name === selectedMountain) {
-                mountainElevationEl.textContent = `Elevation: ${mountainArray.elevation} feet`;
-            }
+        if (!selectedMountain) {
+            mountainNameEl.textContent = "";
+            mountainDescriptionEl.textContent = "";
+            mountainElevationEl.textContent = "";
+            mountainEffortEl.textContent = "";
+            mountainImageEl.hidden = true;
+            mountainImageEl.removeAttribute("src");
+            mountainResultEl.hidden = true;
+            return;
         }
+
+        mountainNameEl.textContent = selectedMountain.name;
+        mountainDescriptionEl.textContent = selectedMountain.desc;
+        mountainElevationEl.textContent = `Elevation: ${selectedMountain.elevation.toLocaleString()} feet`;
+        mountainEffortEl.textContent = `Difficulty: ${selectedMountain.effort}`;
+        mountainImageEl.src = `Images/${selectedMountain.img}`;
+        mountainImageEl.alt = selectedMountain.name;
+        mountainImageEl.hidden = false;
+        mountainResultEl.hidden = false;
     };
 };
 
 function populateMountainDropdown() {
-    for (let i = 0; i < mountainsArray.length; i++) {
-        let mountainName = mountainsArray[i].name;
-        let mountainOption = new Option(mountainName);
-        selectMountainEl.appendChild(mountainOption);
+    selectMountainEl.appendChild(new Option("Select a mountain", ""));
+    for (let mountain of mountainsArray) {
+        if (mountain) {
+            selectMountainEl.appendChild(new Option(mountain.name, mountain.name));
+        }
     }
 }
